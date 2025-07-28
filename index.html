@@ -174,7 +174,7 @@
 
       pdfjsLib.getDocument(url).promise.then(pdf => {
         totalPages = pdf.numPages;
-        pageInfo.textContent = 1 / ${totalPages};
+        pageInfo.textContent = `1 / ${totalPages}`;
 
         for (let pageNum = 1; pageNum <= totalPages; pageNum++) {
           pdf.getPage(pageNum).then(page => {
@@ -218,14 +218,14 @@
         });
 
         function scrollToPage(pageNum) {
-          const pageElement = wrapper.querySelector(.pdf-page:nth-child(${pageNum}));
+          const pageElement = wrapper.querySelector(`.pdf-page:nth-child(${pageNum})`);
           if (pageElement) {
             wrapper.scrollLeft = pageElement.offsetLeft;
           }
         }
 
         function updatePagination() {
-          pageInfo.textContent = ${currentPage} / ${totalPages};
+          pageInfo.textContent = `${currentPage} / ${totalPages}`;
           prevBtn.classList.toggle('disabled', currentPage === 1);
           nextBtn.classList.toggle('disabled', currentPage === totalPages);
         }
